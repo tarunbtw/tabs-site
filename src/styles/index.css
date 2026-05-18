@@ -1,0 +1,28 @@
+* {
+  font-family: "JetBrains Mono", monospace !important;
+  transition-duration: 250ms;
+}
+
+@media screen and (max-width: 400px) {
+  .text-base {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #00000000;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2008px;
+  background: #4ade80;
+}
+
+::selection {
+  background-color: #ffffff20;
+}

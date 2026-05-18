@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>tabs - a simple configurable new tab</title>
+
+  <!-- Basic SEO -->
+  <meta name="description" content="tabs - a simple, configurable new tab extension" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="tabs" />
+  <meta property="og:title" content="tabs" />
+  <meta property="og:description" content="a simple, configurable new tab extension" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="assets/icon.png" />
+
+  <!-- Optional -->
+  <meta name="theme-color" content="#4ade80" />
+
+  <link rel="stylesheet" type="text/css" href="styles/tailwind.css" />
+  <link rel="stylesheet" type="text/css" href="styles/index.css" />
+  <script src="scripts/index.ts" type="module" defer></script>
+</head>
+
+
+<body class="relative min-h-screen overflow-x-hidden bg-neutral-950 text-white">
+  <div class="min-h-screen bg-neutral-950 text-white">
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-neutral-800/50 bg-neutral-950">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="flex h-16 items-center justify-between">
+          <a href="/">
+            <div class="flex items-center gap-8">
+              <div class="grid grid-cols-[max-content_auto] gap-2">
+                <img src="assets/icon.png" alt="tabs logo" class="h-8 w-8" />
+                <p class="text-xl font-bold">tabs</p>
+              </div>
+            </div>
+          </a>
+          <!-- desktop menu -->
+          <div class="hidden md:grid grid-flow-col gap-4">
+            <a href="https://github.com/tarunbtw/tabs" target="_blank"
+              class="text-neutral-400 hover:text-white transition-colors duration-200">github</a>
+          </div>
+          <!-- mobile menu button -->
+          <button id="mobile-menu-button"
+            class="md:hidden relative w-6 h-6 text-neutral-400 hover:text-white transition-colors duration-200"
+            aria-label="Toggle menu">
+            <svg id="hamburger-icon" class="absolute inset-0 w-6 h-6" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg id="x-icon" class="absolute inset-0 w-6 h-6 hidden" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <!-- mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4">
+          <div class="flex flex-col gap-3">
+            <a href="https://github.com/tarunbtw/tabs" target="_blank"
+              class="text-neutral-400 hover:text-white transition-colors duration-200 py-2">github</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="relative flex min-h-screen flex-col items-center justify-center px-6 pt-16">
+      <div
+        class="absolute inset-0 bg-[linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]">
+      </div>
+      <div class="relative z-10 flex flex-col items-center text-center pt-40">
+        <h1
+          class="mb-6 bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-6xl font-bold tracking-tight text-transparent sm:text-7xl md:text-8xl">
+          tabs
+        </h1>
+        <p class="mb-12 max-w-2xl text-lg text-neutral-400 sm:text-xl">
+          <span id="rotating-text"
+            class="inline-block opacity-0 translate-y-4 transition duration-500 ease-out will-change-transform">
+            a <span class="text-green-400">simple</span> configurable new tab
+          </span>
+        </p>
+        <a
+          href="./assets/tabs.zip"
+          download="tabs.zip"
+          id="download-btn"
+          class="group relative inline-flex items-center gap-3 rounded-xl border border-green-500/30 bg-green-500/10 px-8 py-4 text-base font-semibold text-green-400 shadow-[0_0_30px_rgba(74,222,128,0.15)] transition-all duration-300 hover:border-green-500/60 hover:bg-green-500/20 hover:shadow-[0_0_40px_rgba(74,222,128,0.25)] hover:-translate-y-0.5 opacity-0 translate-y-2"
+        >
+          <svg class="h-5 w-5 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          download tabs.zip
+        </a>
+        <p class="mt-4 text-sm text-neutral-600 opacity-0 translate-y-2" id="install-hint">load unpacked in chrome://extensions</p>
+      </div>
+      <div id="preview"
+        class="relative z-10 mt-16 w-[95vw] max-w-6xl opacity-0 translate-y-4 transition-all duration-500 ease-out">
+        <div class="bg-green-400 p-1 rounded-2xl overflow-hidden">
+          <img src="assets/preview/main.png" alt="tabs preview"
+            class="w-full h-full max-h-[70vh] object-cover rounded-xl shadow-2xl" />
+        </div>
+      </div>
+      <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div class="h-[80vh] w-[80vw] rounded-full bg-green-500/10 blur-[120px]"></div>
+      </div>
+      <div class="mt-auto px-2 pt-40 pb-4">
+        <p class="text-center text-base text-white">Made with ⚡️</p>
+      </div>
+    </main>
+  </div>
+</body>
